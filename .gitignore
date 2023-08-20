@@ -1,0 +1,5 @@
+*node_modules/*
+*Images/*
+*Models/*
+*__pycache__/*
+*temp/*
