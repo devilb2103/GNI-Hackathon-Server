@@ -42,6 +42,10 @@ def classifyImage(stacked_image_array: np.ndarray) -> list:
         predictions = {"Grade":"","IDH_Type":"","1p/19q":"", "MGMT":""}
         for i in range(4):
             predictions[list(predictions.keys())[i]] = class_arr[i][round(model[i][0][0])]
+            if(predictions["Grade"] == "G3"):
+                predictions["Pathology"] = "Astrocytoma"
+            else:
+                predictions["Pathology"] = "Glioblastoma"
         return predictions
     except Exception as e:
         call_name = inspect.stack()[0][3]

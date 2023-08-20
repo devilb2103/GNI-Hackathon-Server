@@ -89,16 +89,12 @@ def generatePDF(patientData: dict, images):
             '<patient_id>': patientData["<patient_id>"],
             '<patient_age>': patientData["<patient_age>"],
             '<scan_date>': patientData["<scan_date>"],
-            '<pathology>': "",
+            '<pathology>': classificationData['Pathology'],
             '<grade>': classificationData['Grade'],
             "<idh>": classificationData['IDH_Type'],
             "<mgmt>": classificationData['MGMT'],
             "<1p/19q>": classificationData['1p/19q'],
         }
-        if(data['<grade>'] == "G3"):
-            data['<pathology>'] = "Astrocytoma"
-        else:
-            data['<pathology>'] = "Glioblastoma"
 
         generatePDF_internal(paths[0], paths[1], data)
     except Exception as e:
